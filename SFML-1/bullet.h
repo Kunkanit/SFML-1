@@ -2,16 +2,15 @@
 #include <SFML/Graphics.hpp>
 #include "Animation.h"
 #include "Player.h"
-#include "Collider.h"
 #include <iostream>
 using namespace std;
 
-class bullet
+class Bullet
 {
 public:
-    bullet(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, sf::Vector2f pos);
-    ~bullet();
-    void update(float deltaTime);
+    Bullet(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, sf::Vector2f pos);
+    ~Bullet();
+    void Update(float deltaTime);
     void Draw(sf::RenderWindow& window);
     bool isAvaliable();
     void attack(sf::Vector2f pos);

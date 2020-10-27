@@ -19,12 +19,11 @@ private:
 	unsigned int row;
 	float speed;
 	bool faceRight;
-
+	bool bullet;
 	sf::Vector2f velocity;
 	bool canJump;
 	float jumpHigh;
 
-	bool bul;
-
+	
 };
 

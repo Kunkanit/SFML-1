@@ -1,8 +1,7 @@
-#include "bullet.h"
+#include "Bullet.h"
 #include<iostream>
 
-
-bullet::bullet(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, sf::Vector2f pos) :
+Bullet::Bullet(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, sf::Vector2f pos) :
     animation(texture, imageCount, switchTime)
 {
     this->speed = speed;
@@ -12,45 +11,41 @@ bullet::bullet(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
     body.setPosition(pos);
     body.setTexture(texture);
 }
-bullet::~bullet()
+Bullet::~Bullet()
 {
 }
-
-void bullet::update(float deltaTime)
+void Bullet::Update(float deltaTime)
 {
-    
-        if (body.getPosition().x != NULL - 100 && body.getPosition().y != NULL - 100) {
-            velocity.y = 0;
-            velocity.x = speed;
+    if (body.getPosition().x != NULL - 100 && body.getPosition().y != NULL - 100) {
+        velocity.y = 0;
+        velocity.x = speed;
 
-            body.move(velocity * deltaTime);
+        body.move(velocity * deltaTime);
 
-            animation.updateGun(row, deltaTime);
-            body.setTextureRect(animation.uvRect);
-        }
-        /* if (body.getPosition().x > 1920) {
-            isAva = true;
-        } */
-    
+        animation.updateBu(row, deltaTime);
+        body.setTextureRect(animation.uvRect);
+    }
+    /* if (body.getPosition().x > 1920) {
+        isAva = true;
+    } */
 }
 
-
-void bullet::attack(sf::Vector2f pos) {
-    body.setPosition(pos.x + 53.0f, pos.y);
+void Bullet::attack(sf::Vector2f pos) {
+    body.setPosition(pos.x+53.0f,pos.y+10.0f);
     isAva = false;
 }
 
-void bullet::del()
+void Bullet::del()
 {
     body.setPosition(NULL - 100, NULL - 100);
 }
 
-bool bullet::isAvaliable() {
+bool Bullet::isAvaliable() {
     isAva = true;
     return isAva;
 }
 
-void bullet::Draw(sf::RenderWindow& window)
+void Bullet::Draw(sf::RenderWindow& window)
 {
     window.draw(body);
 }
